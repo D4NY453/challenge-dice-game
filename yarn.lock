@@ -4379,6 +4379,7 @@ __metadata:
     eslint-config-next: "npm:~16.2.4"
     eslint-config-prettier: "npm:~10.1.8"
     eslint-plugin-prettier: "npm:~5.5.5"
+    framer-motion: "npm:^12.41.0"
     kubo-rpc-client: "npm:~6.1.0"
     next: "npm:~16.2.4"
     next-nprogress-bar: "npm:~2.4.7"
@@ -10474,6 +10475,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^12.41.0":
+  version: 12.41.0
+  resolution: "framer-motion@npm:12.41.0"
+  dependencies:
+    motion-dom: "npm:^12.41.0"
+    motion-utils: "npm:^12.39.0"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10/9d35f04685c7c84a3474fde625c6cc1a38d6cf9705b319d812966f3551eb1f9f914cee5a2141ca6ff372e9f1f89dc13283f72eb230c5e2715b7285e8ed9efb4e
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:11.1.0":
   version: 11.1.0
   resolution: "fs-extra@npm:11.1.0"
@@ -13355,6 +13378,22 @@ __metadata:
   version: 1.1.0
   resolution: "modern-ahocorasick@npm:1.1.0"
   checksum: 10/299d19120cd9b4944b546d3914acbaf388c5bf606a2aeb2682c054e492ddf2aaf0096630e5cdda4c069f13394b8ebe9ccfa733be40fe50b1d9c031f0de6213d8
+  languageName: node
+  linkType: hard
+
+"motion-dom@npm:^12.41.0":
+  version: 12.41.0
+  resolution: "motion-dom@npm:12.41.0"
+  dependencies:
+    motion-utils: "npm:^12.39.0"
+  checksum: 10/f3f3a3e19cabb6e925134ac8e90b9f4a39da084d15c744b2304c1d7960167314c70af0b63bbe7a7ec7176b4e45f7ede8d2c4ce75e47ffafe9435323907c956d3
+  languageName: node
+  linkType: hard
+
+"motion-utils@npm:^12.39.0":
+  version: 12.39.0
+  resolution: "motion-utils@npm:12.39.0"
+  checksum: 10/5aa2972bf38c44e44e0a39a70202ce69d585d88d28b37975ca0849756b8614e28d5ebd263ed806e94886b1fe684ce28ee630c4556c465581eaa6dca420249486
   languageName: node
   linkType: hard
 

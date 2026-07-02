@@ -155,52 +155,246 @@
 @plugin "daisyui/theme" {
   name: "dark";
 
-  --color-primary: #026262;
-  --color-primary-content: #c8f5ff;
-  --color-secondary: #107575;
-  --color-secondary-content: #e9fbff;
-  --color-accent: #c8f5ff;
-  --color-accent-content: #088484;
-  --color-neutral: #e9fbff;
-  --color-neutral-content: #11acac;
-  --color-base-100: #11acac;
-  --color-base-200: #088484;
-  --color-base-300: #026262;
-  --color-base-content: #e9fbff;
-  --color-info: #c8f5ff;
+  --color-primary: #f5b324;
+  --color-primary-content: #ffffff; /* White text on primary */
+  --color-secondary: #f59e0b;
+  --color-secondary-content: #ffffff; /* White text on secondary */
+  --color-accent: #fcd34d;
+  --color-accent-content: #ffffff; /* White text on accent */
+  --color-neutral: #e2e8f0;
+  --color-neutral-content: #ffffff; /* White text on neutral */
+  --color-base-100: #000000; /* Pure Infinite Black background */
+  --color-base-200: #080808;
+  --color-base-300: #111111;
+  --color-base-content: #f8fafc;
+  --color-info: #3b82f6;
   --color-success: #34eeb6;
   --color-warning: #ffcf72;
   --color-error: #ff8863;
 
-  --radius-field: 9999rem;
+  --radius-field: 1rem;
   --radius-box: 1rem;
 
   --tt-tailw: 6px;
-  --tt-bg: var(--color-primary); /* if you need a tooltip bg override */
+  --tt-bg: var(--color-primary);
 }
 
 @theme inline {
   --font-space-grotesk: var(--font-space-grotesk);
 }
 
-/* Override Scaffold UI theme colors */
+/* Override Scaffold UI theme colors with transparent variables for glassmorphism */
 html[data-theme] {
-  --color-sui-primary: var(--color-primary);
-  --color-sui-primary-content: var(--color-primary-content);
-  --color-sui-primary-subtle: var(--color-secondary);
-  --color-sui-primary-neutral: var(--color-base-200);
+  --color-sui-primary: rgba(245, 179, 36, 0.25);
+  --color-sui-primary-content: #ffffff;
+  --color-sui-primary-subtle: rgba(245, 158, 11, 0.15);
+  --color-sui-primary-neutral: rgba(8, 8, 8, 0.6);
   --color-sui-base-content: var(--color-base-content);
-  --color-sui-base-100: var(--color-base-100);
+  --color-sui-base-100: rgba(0, 0, 0, 0.2);
   --color-sui-neutral: var(--color-neutral);
   --color-sui-neutral-content: var(--color-neutral-content);
   --color-sui-accent: var(--color-accent);
 
-  --color-sui-input-border: var(--color-secondary);
-  --color-sui-input-background: var(--color-base-200);
-  --color-sui-input-text: color-mix(in oklab, var(--color-sui-base-content) 70%, transparent);
+  --color-sui-input-border: rgba(245, 179, 36, 0.3);
+  --color-sui-input-background: rgba(0, 0, 0, 0.4);
+  --color-sui-input-text: #ffffff;
   --color-sui-input-border-error: var(--color-sui-error);
   --color-sui-input-border-disabled: var(--color-sui-primary-subtle);
 
   --color-sui-skeleton-base: var(--color-sui-primary-subtle);
   --color-sui-skeleton-highlight: var(--color-sui-primary-neutral);
+}
+
+/* Custom Premium UI Overrides & Infinite Black Background */
+body {
+  background-color: #000000 !important;
+  color: #f8fafc !important;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(245, 179, 36, 0.15) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    0 0 15px 0 rgba(245, 179, 36, 0.05) !important;
+  padding: 1.5rem !important;
+}
+
+.glass-card:hover {
+  border-color: rgba(245, 179, 36, 0.3) !important;
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.45),
+    0 0 25px 3px rgba(245, 179, 36, 0.08) !important;
+}
+
+/* Glowing text gradients */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ensure all table content inside glass cards is bright white/slate for readability */
+.glass-card table,
+.glass-card table th,
+.glass-card table td,
+.glass-card table a,
+.glass-card table span,
+.glass-card table svg {
+  color: #f8fafc !important;
+  fill: currentColor !important;
+}
+
+/* Ensure all Address components (links, copy buttons, icons) across the site are white and highly visible */
+a[href*="/address"],
+a[href*="/address"] *,
+.glass-card a,
+.glass-card span:not(.badge),
+div[class*="Address"] *,
+button[class*="Address"] svg {
+  color: #f8fafc !important;
+  fill: currentColor !important;
+}
+
+/* Transparent Header Active/Hover buttons to show the dots */
+.menu-horizontal li a.bg-secondary,
+.menu-compact li a.bg-secondary,
+.menu-horizontal li a:hover,
+.menu-compact li a:hover,
+.menu-horizontal li a:focus,
+.menu-compact li a:focus {
+  background-color: rgba(245, 179, 36, 0.25) !important;
+  border: 1px solid rgba(245, 179, 36, 0.4) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Connect Wallet and Faucet buttons text readability */
+div.navbar-end *,
+div.navbar-end span,
+div.navbar-end button {
+  color: #ffffff !important;
+}
+
+/* Transparent Amber/Yellow elements in Debug and Cards to let dots shine through */
+.bg-secondary,
+div[class*="bg-secondary"],
+.bg-sui-primary-subtle,
+div[class*="bg-sui-primary-subtle"],
+.bg-warning,
+div[class*="bg-warning"],
+.badge-warning {
+  background-color: rgba(245, 179, 36, 0.15) !important;
+  border: 1px solid rgba(245, 179, 36, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* Make sure text inside transparent amber/yellow elements is highly visible white */
+.bg-secondary,
+.bg-secondary *,
+div[class*="bg-secondary"] *,
+.bg-sui-primary-subtle,
+.bg-sui-primary-subtle *,
+div[class*="bg-sui-primary-subtle"] *,
+.bg-warning,
+.bg-warning *,
+div[class*="bg-warning"] *,
+.badge-warning,
+.badge-warning * {
+  color: #ffffff !important;
+}
+
+/* Contract selector tabs text readability in /debug page */
+button.btn-secondary.btn-sm,
+button.btn.btn-sm.font-light {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Make contract panels and state parameters text white and readable */
+div[class*="DebugContracts"] *,
+div[class*="ContractUI"] *,
+div[class*="bg-sui-base-100"] * {
+  color: #ffffff !important;
+}
+
+/* Add premium glass borders and blur to debug panels and cards */
+div[class*="bg-sui-base-100"],
+div[class*="bg-sui-primary-subtle"],
+.bg-sui-base-100,
+.bg-sui-primary-subtle {
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(245, 179, 36, 0.15) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Snug and compact Read/Write badges on debug page - Ultra Robust Selectors */
+div.absolute.self-start.h-\[5rem\].w-\[5\.5rem\],
+div.absolute.self-start.h-\[5rem\],
+div[class*="absolute self-start h-[5rem]"],
+div.bg-sui-base-100 div.absolute.self-start,
+div[class*="bg-sui-base-100"] div.absolute.self-start,
+div[class*="DebugContracts"] div.absolute.self-start {
+  height: 2.2rem !important;
+  width: auto !important;
+  min-width: 5.5rem !important;
+  padding-left: 1.2rem !important;
+  padding-right: 1.2rem !important;
+  margin-top: -1.8rem !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+div.absolute.self-start.h-\[5rem\].w-\[5\.5rem\] > div,
+div.absolute.self-start.h-\[5rem\] > div,
+div[class*="absolute self-start h-[5rem]"] > div,
+div.bg-sui-base-100 div.absolute.self-start > div,
+div[class*="bg-sui-base-100"] div.absolute.self-start > div,
+div[class*="DebugContracts"] div.absolute.self-start > div {
+  margin-top: 0 !important;
+  font-size: 0.85rem !important;
+  line-height: 1 !important;
+}
+
+/* Glassmorphism overrides for table headers, primary/secondary buttons and tables */
+th.bg-primary,
+.bg-primary {
+  background-color: rgba(245, 179, 36, 0.15) !important;
+  border: 1px solid rgba(245, 179, 36, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  color: #ffffff !important;
+}
+
+.btn-secondary,
+.btn-primary {
+  background-color: rgba(245, 179, 36, 0.18) !important;
+  border: 1px solid rgba(245, 179, 36, 0.45) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 0 10px rgba(245, 179, 36, 0.1) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.btn-secondary:hover,
+.btn-primary:hover {
+  background-color: rgba(245, 179, 36, 0.35) !important;
+  border-color: rgba(245, 179, 36, 0.7) !important;
+  box-shadow: 0 0 20px rgba(245, 179, 36, 0.25) !important;
+}
+
+/* Make tables transparent glass cards */
+table.table,
+.table {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(245, 179, 36, 0.15) !important;
+}
+
+table.table tr:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
 }

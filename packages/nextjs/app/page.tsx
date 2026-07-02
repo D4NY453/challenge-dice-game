@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Address } from "@scaffold-ui/components";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { BugAntIcon, MagnifyingGlassIcon, PlayIcon } from "@heroicons/react/24/outline";
+import { InteractiveHero } from "~~/components/ui/interactive-hero";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
@@ -14,87 +15,62 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="flex items-center flex-col grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-            <span className="block text-xl font-bold">(Speedrun Ethereum Challenge: Dice game extension)</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} chain={targetNetwork} />
-          </div>
-
-          <div className="flex items-center flex-col flex-grow pt-10">
-            <div className="px-5">
-              <h1 className="text-center mb-6">
-                <span className="block text-2xl mb-2">Speedrun Ethereum</span>
-                <span className="block text-4xl font-bold">Challenge: 🎲 Dice Game</span>
-              </h1>
-              <div className="flex flex-col items-center justify-center">
-                <Image
-                  src="/hero.png"
-                  width="727"
-                  height="231"
-                  alt="challenge banner"
-                  className="rounded-xl border-4 border-primary"
-                />
-                <div className="max-w-3xl">
-                  <p className="text-lg mt-10">
-                    🎰 Randomness is tricky on a public deterministic blockchain. The block hash is an easy to use, but
-                    very weak form of randomness. This challenge will give you an example of a contract using the block
-                    hash to create random numbers. This randomness is exploitable. Other, stronger forms of randomness
-                    include commit/reveal schemes, oracles, or VRF from Chainlink.
-                  </p>
-                  <p className="text-lg mt-2">
-                    🧤 Every time a player rolls the dice, they are required to send .002 Eth. 40 percent of this value
-                    is added to the current prize amount while the other 60 percent stays in the contract to fund future
-                    prizes. Once a prize is won, the new prize amount is set to 10% of the total balance of the DiceGame
-                    contract.
-                  </p>
-                  <p className="text-lg mt-2">
-                    🧨 Your job is to attack the Dice Game contract! You will create a new contract that will predict
-                    the randomness ahead of time and only roll the dice when you′re guaranteed to be a winner!
-                  </p>
-                  <p className="text-lg mt-2">
-                    💬 Meet other builders working on this challenge and get help in the{" "}
-                    <a href="https://t.me/+3StA0aBSArFjNjUx" target="_blank" rel="noreferrer" className="underline">
-                      Telegram Group
-                    </a>
-                  </p>
-                  <p className="text-center text-lg">
-                    <a href="https://speedrunethereum.com/" target="_blank" rel="noreferrer" className="underline">
-                      SpeedrunEthereum.com
-                    </a>
-                    !
-                  </p>
-                </div>
+      <div className="relative flex flex-col grow overflow-hidden min-h-screen">
+        {/* Hero Section */}
+        <div className="relative z-10 w-full overflow-hidden border-b border-primary/10 bg-transparent py-12 px-6 sm:px-12 flex items-center justify-center">
+          <div className="relative z-10 flex w-full max-w-6xl flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
+            <div className="max-w-2xl animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 border border-primary/20 rounded-full">
+                ✨ Speedrun Ethereum
               </div>
+              <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 mb-4">
+                Challenge 🎲 Dice Game
+              </h2>
+              <p className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed font-medium">
+                🎰 La aleatoriedad en blockchains públicas y deterministas es vulnerable. El hash de bloque es sencillo
+                de usar, pero débil. Este reto demuestra cómo explotar la aleatoriedad predecible y cómo proteger tus
+                contratos inteligentes con soluciones seguras.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 sm:flex-row shrink-0 items-center justify-center">
+              <Link
+                href="/dice"
+                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 px-8 py-3.5 text-base font-bold text-slate-950 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.03] transition-all gap-2 cursor-pointer"
+              >
+                <PlayIcon className="h-5 w-5 stroke-[2.5]" />
+                <span>Play Dice Game</span>
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col md:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
+        {/* Interactive Hero Banner */}
+        <div className="relative z-10 flex items-center flex-col w-full px-5 pt-8">
+          <InteractiveHero />
+        </div>
+
+        {/* Footer shortcuts */}
+        <div className="grow w-full mt-16 px-8 py-12">
+          <div className="flex justify-center items-center gap-6 flex-col md:flex-row max-w-3xl mx-auto">
+            <div className="glass-card flex flex-col px-8 py-10 text-center items-center max-w-xs">
+              <BugAntIcon className="h-8 w-8 text-secondary" />
+              <p className="mt-3 text-base-content/85">
+                Experimenta con tu contrato inteligente en la pestaña{" "}
+                <Link href="/debug" passHref className="link text-primary">
                   Debug Contracts
-                </Link>{" "}
-                tab.
+                </Link>
+                .
               </p>
             </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
+            <div className="glass-card flex flex-col px-8 py-10 text-center items-center max-w-xs">
+              <MagnifyingGlassIcon className="h-8 w-8 text-secondary" />
+              <p className="mt-3 text-base-content/85">
+                Explora tus transacciones locales en la pestaña{" "}
+                <Link href="/blockexplorer" passHref className="link text-primary">
                   Block Explorer
-                </Link>{" "}
-                tab.
+                </Link>
+                .
               </p>
             </div>
           </div>

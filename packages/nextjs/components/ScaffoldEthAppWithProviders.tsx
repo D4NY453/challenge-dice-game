@@ -10,14 +10,31 @@ import { WagmiProvider } from "wagmi";
 import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
+import { DottedGlowBackground } from "~~/components/ui/dotted-glow-background";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className={`flex flex-col min-h-screen `}>
+      <div className="relative flex flex-col min-h-screen overflow-x-hidden">
+        {/* Global Dotted Glow Background */}
+        <DottedGlowBackground
+          className="pointer-events-none opacity-35 dark:opacity-90 z-0"
+          opacity={1}
+          gap={12}
+          radius={1.8}
+          colorLightVar="--color-neutral-400"
+          glowColorLightVar="--color-neutral-500"
+          colorDarkVar="--color-neutral-600"
+          glowColorDarkVar="--color-sky-900"
+          backgroundOpacity={0}
+          speedMin={0.3}
+          speedMax={1.6}
+          speedScale={1}
+        />
+
         <Header />
-        <main className="relative flex flex-col flex-1">{children}</main>
+        <main className="relative flex flex-col flex-1 z-10">{children}</main>
         <Footer />
       </div>
       <Toaster />

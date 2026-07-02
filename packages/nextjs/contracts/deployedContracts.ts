@@ -280,10 +280,295 @@ const deployedContracts = {
       ],
       inheritedFunctions: {
         owner: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
-        renounceOwnership: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
-        transferOwnership: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        renounceOwnership:
+          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        transferOwnership:
+          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
       },
       deployedOnBlock: 95,
+    },
+  },
+  11155111: {
+    DiceGame: {
+      address: "0xfe06da460d49232295d0ba6f503c3482d955158c",
+      abi: [
+        {
+          inputs: [],
+          stateMutability: "payable",
+          type: "constructor",
+        },
+        {
+          inputs: [],
+          name: "NotEnoughEther",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "player",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "roll",
+              type: "uint256",
+            },
+          ],
+          name: "Roll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "winner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "Winner",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "nonce",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "prize",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "rollTheDice",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {},
+      deployedOnBlock: 11185128,
+    },
+    RiggedRoll: {
+      address: "0x072d6d312b0257fadae60e473b071a7dc1c1cbfb",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address payable",
+              name: "diceGameAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "required",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "available",
+              type: "uint256",
+            },
+          ],
+          name: "InsufficientBalance",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "required",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "available",
+              type: "uint256",
+            },
+          ],
+          name: "NotEnoughETH",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "roll",
+              type: "uint256",
+            },
+          ],
+          name: "NotWinningRoll",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "OwnableInvalidOwner",
+          type: "error",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "account",
+              type: "address",
+            },
+          ],
+          name: "OwnableUnauthorizedAccount",
+          type: "error",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "previousOwner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "OwnershipTransferred",
+          type: "event",
+        },
+        {
+          inputs: [],
+          name: "diceGame",
+          outputs: [
+            {
+              internalType: "contract DiceGame",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "renounceOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "riggedRoll",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "newOwner",
+              type: "address",
+            },
+          ],
+          name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+          ],
+          name: "withdraw",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
+        },
+      ],
+      inheritedFunctions: {
+        owner: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        renounceOwnership:
+          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        transferOwnership:
+          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+      },
+      deployedOnBlock: 11185130,
     },
   },
 } as const;
