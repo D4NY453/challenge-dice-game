@@ -210,19 +210,19 @@ export const GlassDice: React.FC<GlassDiceProps> = ({ value = "0", isRolling = f
       // Rotate and project vertices (Z -> Y -> X order)
       const projected = vertices.map(([x, y, z]) => {
         // 1. Rotate Z
-        let x1 = x * cz - y * sz;
-        let y1 = x * sz + y * cz;
-        let z1 = z;
+        const x1 = x * cz - y * sz;
+        const y1 = x * sz + y * cz;
+        const z1 = z;
 
         // 2. Rotate Y
-        let x2 = x1 * cy + z1 * sy;
-        let y2 = y1;
-        let z2 = -x1 * sy + z1 * cy;
+        const x2 = x1 * cy + z1 * sy;
+        const y2 = y1;
+        const z2 = -x1 * sy + z1 * cy;
 
         // 3. Rotate X
-        let x3 = x2;
-        let y3 = y2 * cx - z2 * sx;
-        let z3 = y2 * sx + z2 * cx;
+        const x3 = x2;
+        const y3 = y2 * cx - z2 * sx;
+        const z3 = y2 * sx + z2 * cx;
 
         // Project
         const factor = perspective / (perspective + z3);
@@ -251,14 +251,6 @@ export const GlassDice: React.FC<GlassDiceProps> = ({ value = "0", isRolling = f
         let nx = ac[1] * ab[2] - ac[2] * ab[1];
         let ny = ac[2] * ab[0] - ac[0] * ab[2];
         let nz = ac[0] * ab[1] - ac[1] * ab[0];
-
-        // Face center in local coordinates before rotation
-        const localA = vertices[ia];
-        const localB = vertices[ib];
-        const localC = vertices[ic];
-        const lcx = (localA[0] + localB[0] + localC[0]) / 3;
-        const lcy = (localA[1] + localB[1] + localC[1]) / 3;
-        const lcz = (localA[2] + localB[2] + localC[2]) / 3;
 
         // Safer: normal dot rotated center (ox, oy, oz) should be positive!
         const cox = (A.ox + B.ox + C.ox) / 3;

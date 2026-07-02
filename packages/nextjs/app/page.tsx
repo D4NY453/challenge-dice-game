@@ -1,18 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Address } from "@scaffold-ui/components";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon, PlayIcon } from "@heroicons/react/24/outline";
 import { InteractiveHero } from "~~/components/ui/interactive-hero";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-  const { targetNetwork } = useTargetNetwork();
-
   return (
     <>
       <div className="relative flex flex-col grow overflow-hidden min-h-screen">

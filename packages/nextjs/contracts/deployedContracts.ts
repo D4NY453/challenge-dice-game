@@ -280,10 +280,8 @@ const deployedContracts = {
       ],
       inheritedFunctions: {
         owner: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
-        renounceOwnership:
-          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
-        transferOwnership:
-          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        renounceOwnership: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        transferOwnership: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
       },
       deployedOnBlock: 95,
     },
@@ -563,10 +561,8 @@ const deployedContracts = {
       ],
       inheritedFunctions: {
         owner: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
-        renounceOwnership:
-          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
-        transferOwnership:
-          "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        renounceOwnership: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
+        transferOwnership: "npm/@openzeppelin/contracts@5.6.1/access/Ownable.sol",
       },
       deployedOnBlock: 11185130,
     },

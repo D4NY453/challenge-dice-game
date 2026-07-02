@@ -12,11 +12,14 @@ export const GlassCube: React.FC<GlassCubeProps> = ({ isRolling = true, classNam
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Maintain current rotation angles
-  const rotationRef = useRef({ rx: Math.random() * 2, ry: Math.random() * 2, rz: Math.random() * 2 });
+  const rotationRef = useRef({ rx: 0.5, ry: 0.8, rz: 0.3 });
   // Maintain spin velocity
   const velocityRef = useRef({ vx: 0.06, vy: 0.09, vz: 0.04 });
 
   useEffect(() => {
+    // Randomize initial rotation once on mount to keep rendering pure
+    rotationRef.current = { rx: Math.random() * 2, ry: Math.random() * 2, rz: Math.random() * 2 };
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -88,19 +91,19 @@ export const GlassCube: React.FC<GlassCubeProps> = ({ isRolling = true, classNam
       // Rotate and project vertices (Z -> Y -> X order)
       const projected = vertices.map(([x, y, z]) => {
         // 1. Rotate Z
-        let x1 = x * cz - y * sz;
-        let y1 = x * sz + y * cz;
-        let z1 = z;
+        const x1 = x * cz - y * sz;
+        const y1 = x * sz + y * cz;
+        const z1 = z;
 
         // 2. Rotate Y
-        let x2 = x1 * cy + z1 * sy;
-        let y2 = y1;
-        let z2 = -x1 * sy + z1 * cy;
+        const x2 = x1 * cy + z1 * sy;
+        const y2 = y1;
+        const z2 = -x1 * sy + z1 * cy;
 
         // 3. Rotate X
-        let x3 = x2;
-        let y3 = y2 * cx - z2 * sx;
-        let z3 = y2 * sx + z2 * cx;
+        const x3 = x2;
+        const y3 = y2 * cx - z2 * sx;
+        const z3 = y2 * sx + z2 * cx;
 
         // Project
         const factor = perspective / (perspective + z3);
